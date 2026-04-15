@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+PyMuPDF
+Pillow
+pyzbar
+opencv-python-headless
+pytesseract
+playwright

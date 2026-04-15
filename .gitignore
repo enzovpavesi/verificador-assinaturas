@@ -1,0 +1,20 @@
+#Variaveis do ambiente
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Uploads temporários
+backend/uploads/
+
+# Ambientes virtuais
+venv/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
