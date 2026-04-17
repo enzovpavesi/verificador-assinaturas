@@ -1,0 +1,11 @@
+O fluxo pensado para o aplicativo, é:
+
+Upload do doc (PDF/JPG/PNG)
+⬇️
+extrair urls (pdf) / detectar qr code (jpg/png) / OCR (reconhecimento de caracteres) para URLs no texto nas PNG/JPG
+⬇️
+Playwright abre a URL, captura a tela e extrai o texto da pagina
+⬇️
+analisar palavras chave e retornar VALIDO/INVALIDO ou INCONCLUSIVO
+⬇️
+Resposta JSON com Status + captura de tela

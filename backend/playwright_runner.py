@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 
 def validate_url(url: str) -> dict:
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         try:
             page.goto(url, timeout=30000, wait_until="networkidle")
@@ -23,7 +23,7 @@ def validate_url(url: str) -> dict:
 
 def validate_crm(crm_number: str) -> dict:
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         try:
             page.goto("https://portal.cfm.org.br/busca-medicos", timeout=30000, wait_until="networkidle")
@@ -42,7 +42,7 @@ def validate_govbr(file_path: str) -> dict:
     loop = asyncio.ProactorEventLoop()
     asyncio.set_event_loop(loop)
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         try:
             page.goto("https://validar.iti.gov.br", timeout=30000, wait_until="networkidle")

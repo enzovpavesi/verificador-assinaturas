@@ -102,6 +102,21 @@ async def validate_document(file: UploadFile = File(...)):
                     "mensagem": "Assinatura manuscrita detectada, mas o tipo não é suportado."
                 }
 
+        # Deriva status_geral a partir dos resultados de validação
+        all_statuses = [
+            resultado[key]["status"]
+            for key in ["validacao_url", "validacao_crm", "validacao_govbr"]
+            if resultado.get(key) and "status" in resultado[key]
+        ]
+        if any(s == "INVÁLIDO" for s in all_statuses):
+            resultado["status_geral"] = "INVÁLIDO"
+        elif any(s == "VÁLIDO" for s in all_statuses):
+            resultado["status_geral"] = "VÁLIDO"
+        elif all_statuses:
+            resultado["status_geral"] = all_statuses[0]
+        else:
+            resultado["status_geral"] = "INCONCLUSIVO"
+
         return resultado
 
     finally:
