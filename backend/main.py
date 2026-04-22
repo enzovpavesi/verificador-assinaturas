@@ -31,7 +31,7 @@ async def validate_document(file: UploadFile = File(...)):
     ext = os.path.splitext(file.filename)[1].lower()
 
     if ext not in ALLOWED_EXTENSIONS:
-        raise HTTPException(status_code=400, detail="Formato não suportado. Use PDF, JPG ou PNG.")
+        raise HTTPException(status_code=415, detail="Formato não suportado. Use PDF, JPG ou PNG.")
 
     file_id = str(uuid.uuid4())
     file_path = os.path.join(UPLOAD_DIR, f"{file_id}{ext}")
